@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import './App.css';
 
-function Search() {
+function Search({setItem}) {
     const [showCuisine, setShowCuisine] = useState(false);
     const [showMeal, setShowMeal] = useState(false);
     return (
         <div className="search">
             <div className="search-div">
                 <span className="material-symbols-outlined">search</span>
-                <input type="text" placeholder="Search recipes..." />
+                <input type="text" placeholder="Search recipes..." onChange={(e) => setItem(e.target.value.toLowerCase())}/>
             </div>
             <div className="cuisine-meal-div">
                 <div className="cuisine-wrapper">

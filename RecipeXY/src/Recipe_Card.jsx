@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { recipes } from "./Recipe_Data";
 import { Link } from "react-router-dom";
 
-function Recipe_Card() {
+function Recipe_Card({item}) {
     const [heartClick, setHeartClick] = useState({});
     const handleHeart = (id) => {
         setHeartClick((prev) => ({
@@ -10,10 +10,20 @@ function Recipe_Card() {
             [id] : !prev[id]
         }));
     }
+
+    console.log(item)
+
+    const filteredItem = () => {
+        return item 
+        ? recipes.filter((filterRecipe) => 
+            filterRecipe.title.toLowerCase().includes(item)
+        ) : recipes
+    }
+
     return (
         <>
             <div className="recipe-grid">
-                {recipes.map((recipe) => {
+                {filteredItem().map((recipe) => {
                     return (
                         <div key={recipe.id} className="recipe-card">
                             <Link to={`/recipe/${recipe.id}`} className="link">

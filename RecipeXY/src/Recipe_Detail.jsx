@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { recipes } from "./Recipe_Data";
 
 function Recipe_Detail() {
@@ -10,14 +10,12 @@ function Recipe_Detail() {
         return <div>Recipe not found!</div>;
     }
 
-    console.log(recipe);
-
     return (
         <div className="recipe-detail-container">
-            <div className="back-btn">
-                <span class="material-symbols-outlined">arrow_back</span>
-                <button>Back to recipes</button>
-            </div>
+            <Link to="/" className="back-btn">
+                <span className="material-symbols-outlined">arrow_back</span>
+            <button>Back to recipes</button>
+            </Link>
             <div className="recipe-image">
                 <img
                     src={recipe.imageUrl}
@@ -33,28 +31,28 @@ function Recipe_Detail() {
             <p className="recipe-description">{recipe.description}</p>
             <div className="total-time-div">
                 <div className="time-div">
-                    <span class="material-symbols-outlined">schedule</span>
+                    <span className="material-symbols-outlined">schedule</span>
                     <div className="time-title">
                         <h3>Prep Time</h3>
                         <p>{recipe.prepTime} mins</p>
                     </div>
                 </div>
                 <div className="time-div">
-                    <span class="material-symbols-outlined">schedule</span>
+                    <span className="material-symbols-outlined">schedule</span>
                     <div className="time-title">
                         <h3>Cook Time</h3>
                         <p>{recipe.cookTime} mins</p>
                     </div>
                 </div>
                 <div className="time-div">
-                    <span class="material-symbols-outlined">schedule</span>
+                    <span className="material-symbols-outlined">schedule</span>
                     <div className="time-title">
                         <h3>Total Time</h3>
                         <p>{recipe.cookTime + recipe.prepTime} mins</p>
                     </div>
                 </div>
                 <div className="time-div">
-                    <span class="material-symbols-outlined">restaurant</span>
+                    <span className="material-symbols-outlined">restaurant</span>
                     <div className="time-title">
                         <h3>Servings</h3>
                         <p>{recipe.servings}</p>
